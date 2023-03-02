@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "${{ needs.job1.outputs.static }}"
-        echo "${{ needs.job1.outputs.matrix.noCoverage }}"
-        echo "${{fromJson(needs.job1.outputs.matrix)}}"
+        echo "${{needs.job1.outputs.static}}"
+        echo "${{fromJson(needs.job1.outputs.matrix).noCoverage}}"
+        echo "${{needs.job1.outputs.matrix}}"
 
