@@ -5,15 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+      static: ${{ steps.set-matrix.outputs.static }}
     steps:
     - id: set-matrix
-      run: echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
+      run: |
+        echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
+        echo 'static="foobar"' >> $GITHUB_OUTPUT
 
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
     - run: |
+        echo "${{ needs.job1.outputs.static }}"
         echo "${{ needs.job1.outputs.matrix.noCoverage }}"
         echo "${{fromJson(needs.job1.outputs.matrix)}}"
 
