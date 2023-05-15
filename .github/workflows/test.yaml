@@ -25,6 +25,9 @@ jobs:
       matrix: ${{fromJson(needs.set-matrix.outputs.matrix)}}
     steps:
     - run: |
+        echo "ARTIFACTORY_URL: ${{ matrix.ARTIFACTORY_URL }}"
         echo "ARTIFACT_URL: ${{ matrix.ARTIFACT_URL }}"
         echo "PRODUCT_NAME: ${{ matrix.PRODUCT_NAME }}"
-
+        echo "DOCKERFILE_PATH: ${{ matrix.DOCKERFILE_PATH }}"
+        echo "IMAGE_REGISTRY: ${{ matrix.IMAGE_REGISTRY }}"
+        echo "TARGET: ${{ matrix.TARGET }}"
