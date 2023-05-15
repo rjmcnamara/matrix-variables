@@ -20,7 +20,8 @@ jobs:
 #        echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
     - id: set-matrix
       run: |
-         echo "matrix=$(yq -j --unwrapScalar=false '.include' mci-variables.yaml)" >> $GITHUB_OUTPUT
+         echo "matrix=$(yq -o=json --unwrapScalar=false '.include' mci-variables.yaml)"
+         echo "matrix=$(yq -o=json --unwrapScalar=false '.include' mci-variables.yaml)" >> $GITHUB_OUTPUT
 #        echo "matrix={\"include\":[{\"ARTIFACT_URL\":\"ARTIFACT_URL1\",\"PRODUCT_NAME\":\"PRODUCT_NAME1\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL2\",\"PRODUCT_NAME\":\"PRODUCT_NAME2\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL3\",\"PRODUCT_NAME\":\"PRODUCT_NAME3\"}]}" >> $GITHUB_OUTPUT
 
 
