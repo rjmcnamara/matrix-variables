@@ -1,7 +1,6 @@
-products:
-- artifact_url: foo.bar
-  product_name: product foo
-- artifact_url: baz.qux
-  product_name: product baz
-- artifact_url: eep.oop
-  product_name: product eep
+- ARTIFACT_URL: foo.bar
+  PRODUCT_NAME: product foo
+- ARTIFACT_URL: baz.qux
+  PRODUCT_NAME: product baz
+- ARTIFACT_URL: eep.oop
+  PRODUCT_NAME: product eep
