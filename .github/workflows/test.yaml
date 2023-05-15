@@ -3,11 +3,17 @@ on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: set-env/output variables
+      uses: actions-tools/yaml-outputs@v2
+      id: yaml
+      with:
+        file-path: '.github/mci-variables.yaml'
     - id: set-matrix
       run: |
+        echo "${{ steps.yaml.outputs.include }}
         echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
 
   job2:
