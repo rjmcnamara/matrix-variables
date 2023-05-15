@@ -1,7 +1,25 @@
-include:
-- ARTIFACT_URL: foo.bar
-  PRODUCT_NAME: product foo
-- ARTIFACT_URL: baz.qux
-  PRODUCT_NAME: product baz
-- ARTIFACT_URL: eep.oop
-  PRODUCT_NAME: product eep
+APP_NAME: service-identity
+APP_ID: e1f893dd-936c-45c5-b01a-e1c20c7c8256
+AWS_ROLE_TO_ASSUME: arn:aws:iam::755299046291:role/github_actions_role
+AWS_REGION: us-west-2
+GO_VERSION: 1.18
+VERSION: '0.0'
+CHANNEL: PR
+SKIP_COREUPDATE: true
+SKIP_AUTOMATION_BUILD: true
+products:
+- DOCKERFILE_PATH: ./docker/deploy/sim/Dockerfile
+  IMAGE_REGISTRY: quay.io/ccsportal/service-identity
+  TARGET: final
+  ARTIFACTORY_URL: hpeartifacts-glcp-images.jfrog.io
+  PRODUCT_NAME: service-identity
+- DOCKERFILE_PATH: ./docker/deploy/token-exchange/Dockerfile
+  IMAGE_REGISTRY: quay.io/ccsportal/token-exchange
+  TARGET: final
+  ARTIFACTORY_URL: hpeartifacts-glcp-images.jfrog.io
+  PRODUCT_NAME: service-identity-fips
+- DOCKERFILE_PATH: ./docker/deploy/api-client/Dockerfile
+  IMAGE_REGISTRY: quay.io/ccsportal/api-clients
+  TARGET: final
+  ARTIFACTORY_URL: hpeartifacts-glcp-images.jfrog.io
+  PRODUCT_NAME: service-identity-automation
