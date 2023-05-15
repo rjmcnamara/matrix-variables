@@ -10,7 +10,7 @@ jobs:
       uses: actions-tools/yaml-outputs@v2
       id: yaml
       with:
-        file-path: '.github/mci-variables.yaml'
+        file-path: 'mci-variables.yaml'
     - id: set-matrix
       run: |
         echo "${{ steps.yaml.outputs.include }}
