@@ -1,7 +1,9 @@
 name: build
 on: push
 jobs:
-  job1:
+  set-matrix:
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
@@ -11,14 +13,22 @@ jobs:
       id: yaml
       with:
         file-path: 'mci-variables.yaml'
+#    - id: set-matrix
+#      run: |
+#        echo "${{ steps.yaml.outputs.include }}"
+#        echo "::set-output name=matrix::{\"include\":[{\"ARTIFACT_URL\":\"${{ env.ARTIFACT_URL1 }}\",\"PRODUCT_NAME\":\"${{ env.PRODUCT_NAME1 }}\"},{\"ARTIFACT_URL\":\"${{ env.ARTIFACT_URL2 }}\",\"PRODUCT_NAME\":\"${{ env.PRODUCT_NAME2 }}\"},{\"ARTIFACT_URL\":\"${{ env.ARTIFACT_URL3 }}\",\"PRODUCT_NAME\":\"${{ env.PRODUCT_NAME3 }}\"}]}"
+#        echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
     - id: set-matrix
-      run: |
-        echo "${{ steps.yaml.outputs.include }}"
-        echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
+      run: echo "::set-output name=matrix::{\"include\":[{\"ARTIFACT_URL\":\"ARTIFACT_URL1\",\"PRODUCT_NAME\":\"PRODUCT_NAME1\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL2\",\"PRODUCT_NAME\":\"PRODUCT_NAME2\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL3\",\"PRODUCT_NAME\":\"PRODUCT_NAME3\"}]}"
+
 
   job2:
-    needs: job1
+    needs: set-matrix
     runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.set-matrix.outputs.matrix)}}
     steps:
     - run: |
-        echo "noCoverage: ${{fromJson(needs.job1.outputs.matrix).noCoverage}}"
+        echo "ARTIFACT_URL: ${{ matrix.ARTIFACT_URL }}"
+        echo "PRODUCT_NAME: ${{ matrix.PRODUCT_NAME }}"
+#        echo "noCoverage: ${{fromJson(needs.set-matrix.outputs.matrix).noCoverage}}"
