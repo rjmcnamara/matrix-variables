@@ -15,7 +15,7 @@ jobs:
         file-path: '.github/mci-variables.yaml'
     - id: set-matrix
       run: |
-        echo "matrix=$(yq -I=0 -o=json '{"include": .products}' mci-variables.yaml)" >> $GITHUB_OUTPUT
+        echo "matrix=$(yq -I=0 -o=json '{"include": .products}' .github/mci-variables.yaml)" >> $GITHUB_OUTPUT
 #        echo "matrix=$(yq -I=0 -o=json '.include = .products | del(.products)' mci-variables.yaml)" >> $GITHUB_OUTPUT
 
   job2:
