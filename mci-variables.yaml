@@ -1,3 +1,4 @@
+products:
 - product:
     artifact_url: foo.bar
     product_name: product foo
