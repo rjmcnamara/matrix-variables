@@ -13,7 +13,7 @@ jobs:
         file-path: 'mci-variables.yaml'
     - id: set-matrix
       run: |
-        echo "${{ steps.yaml.outputs.include }}
+        echo "${{ steps.yaml.outputs.include }}"
         echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
 
   job2:
