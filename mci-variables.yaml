@@ -1,3 +1,4 @@
+projects:
 - ARTIFACT_URL: foo.bar
   PRODUCT_NAME: product foo
 - ARTIFACT_URL: baz.qux
