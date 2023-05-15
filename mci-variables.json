@@ -1,0 +1,10 @@
+{
+   "include": [
+     { "artifact_url": "foo.bar",
+       "product_name": "product foo" },
+     { "artifact_url": "baz.qux",
+       "product_name": "product baz" },
+     { "artifact_url": "eep.oop",
+       "product_name": "product eep" }
+   ]
+}
