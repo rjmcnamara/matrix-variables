@@ -19,7 +19,8 @@ jobs:
 #        echo "::set-output name=matrix::{\"include\":[{\"ARTIFACT_URL\":\"${{ env.ARTIFACT_URL1 }}\",\"PRODUCT_NAME\":\"${{ env.PRODUCT_NAME1 }}\"},{\"ARTIFACT_URL\":\"${{ env.ARTIFACT_URL2 }}\",\"PRODUCT_NAME\":\"${{ env.PRODUCT_NAME2 }}\"},{\"ARTIFACT_URL\":\"${{ env.ARTIFACT_URL3 }}\",\"PRODUCT_NAME\":\"${{ env.PRODUCT_NAME3 }}\"}]}"
 #        echo 'matrix={"noCoverage":"true","someOtherVar":"false"}' >> $GITHUB_OUTPUT
     - id: set-matrix
-      run: echo "::set-output name=matrix::{\"include\":[{\"ARTIFACT_URL\":\"ARTIFACT_URL1\",\"PRODUCT_NAME\":\"PRODUCT_NAME1\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL2\",\"PRODUCT_NAME\":\"PRODUCT_NAME2\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL3\",\"PRODUCT_NAME\":\"PRODUCT_NAME3\"}]}"
+      run: |
+        echo "matrix={\"include\":[{\"ARTIFACT_URL\":\"ARTIFACT_URL1\",\"PRODUCT_NAME\":\"PRODUCT_NAME1\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL2\",\"PRODUCT_NAME\":\"PRODUCT_NAME2\"},{\"ARTIFACT_URL\":\"ARTIFACT_URL3\",\"PRODUCT_NAME\":\"PRODUCT_NAME3\"}]}" >> $GITHUB_OUTPUT
 
 
   job2:
