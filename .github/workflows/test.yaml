@@ -12,7 +12,7 @@ jobs:
       uses: actions-tools/yaml-outputs@v2
       id: yaml
       with:
-        file-path: 'mci-variables.yaml'
+        file-path: '.github/mci-variables.yaml'
     - id: set-matrix
       run: |
         echo "matrix=$(yq -I=0 -o=json '{"include": .products}' mci-variables.yaml)" >> $GITHUB_OUTPUT
