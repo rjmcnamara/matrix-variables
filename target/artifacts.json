@@ -1,0 +1,32 @@
+{
+  "git": {
+    "url": "https://ghs_clIYWZtXPOvYDpsqmF2wpWlk2XQsy63gDFkO@github.com/glcp/predef.git",
+    "branch": "master",
+    "commitId": "e9b9fcd",
+    "tags": []
+  },
+  "version": "1.16.0-139-e9b9fcd-SNAPSHOT",
+  "artifacts": [
+    {
+      "type": "docker",
+      "artifactURI": "hpeartifacts-docker-harmony.jfrog.io/infosight/harmony/egress-projector:1.16.0-139-e9b9fcd-SNAPSHOT",
+      "name": "egress-projector",
+      "organization": "hpe.harmony",
+      "version": "1.16.0-139-e9b9fcd-SNAPSHOT"
+    },
+    {
+      "type": "docker",
+      "artifactURI": "hpeartifacts-docker-harmony.jfrog.io/infosight/harmony/auto-lifter:1.16.0-139-e9b9fcd-SNAPSHOT",
+      "name": "auto-lifter",
+      "organization": "hpe.harmony",
+      "version": "1.16.0-139-e9b9fcd-SNAPSHOT"
+    },
+    {
+      "type": "docker",
+      "artifactURI": "hpeartifacts-docker-harmony.jfrog.io/infosight/harmony/projector:1.16.0-139-e9b9fcd-SNAPSHOT",
+      "name": "projector",
+      "organization": "hpe.harmony",
+      "version": "1.16.0-139-e9b9fcd-SNAPSHOT"
+    }
+  ]
+}
