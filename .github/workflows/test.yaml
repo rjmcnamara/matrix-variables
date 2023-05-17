@@ -59,6 +59,7 @@ jobs:
         path: .github/mci-variables.yaml
 
   set-matrix:
+    needs: mci-sbt
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     runs-on: ubuntu-latest
