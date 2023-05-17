@@ -32,10 +32,11 @@ jobs:
         while read -r name; do
           read -r uri
           if [[ "$uri" != "null" ]]; then
+            docker pull $uri
             artifact_url=$(docker inspect --format='{{index .RepoDigests 0}}' $uri)
-          export name
-          export artifact_url
-          yq -i '.artifacts += [{"PRODUCT_NAME": strenv(name), "ARTIFACT_URL": strenv(artifact_url)}]' .github/mci-variables.yaml
+            export name
+            export artifact_url
+            yq -i '.artifacts += [{"PRODUCT_NAME": strenv(name), "ARTIFACT_URL": strenv(artifact_url)}]' .github/mci-variables.yaml
           fi
         done < <( jq -cr '.artifacts[] | (.name, .artifactURI)' target/artifacts.json)
 
